@@ -11,6 +11,9 @@ public class User {
     private Long id;
     private String name;
     private String email;
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name="addressId", referencedColumnName = "id")
+    private Address address;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
