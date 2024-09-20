@@ -1,9 +1,9 @@
 package com.projetospring.newproject.userdept.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="address")
 public class Address {
 
     private String street;
