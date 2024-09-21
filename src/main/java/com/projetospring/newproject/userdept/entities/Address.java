@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "ADDRESS")
 public class Address {
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,13 +23,6 @@ public class Address {
     private String state;
     @Column(name = "Country")
     private String country;
-
-    public Address(){
-
-    }
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     public String getStreet() {
         return street;

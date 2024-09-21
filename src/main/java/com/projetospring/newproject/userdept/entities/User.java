@@ -8,6 +8,9 @@ import java.util.List;
 @Entity
 @Table(name = "USER")
 public class User {
+    @OneToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,13 +21,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Address> address;
 
-    @OneToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
-
-    public User(){
-
-    }
 
     public Long getId() {
         return id;
