@@ -3,19 +3,22 @@ package com.projetospring.newproject.userdept.entities;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
+import java.util.List;
+
 @Entity
-@Table(name = "tb_user")
+@Table(name = "USER")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "Name")
     private String name;
+    @Column(name = "Email")
     private String email;
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name="addressId", referencedColumnName = "id")
-    private Address address;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Address> address;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "department_id")
     private Department department;
 
@@ -51,7 +54,5 @@ public class User {
         return department;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
 }
+

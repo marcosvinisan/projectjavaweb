@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
-@Table(name = "tb_department")
+@Table(name = "DEPARTMENT")
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,18 +3,30 @@ package com.projetospring.newproject.userdept.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="address")
+@Table(name = "ADDRESS")
 public class Address {
-
-    private String street;
-    private int number;
-    private String district;
-    private String city;
-    private String state;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "Street")
+    private String street;
+    @Column(name = "Number")
+    private int number;
+    @Column(name = "District")
+    private String district;
+    @Column(name = "City")
+    private String city;
+    @Column(name = "State")
+    private String state;
+    @Column(name = "Country")
+    private String country;
+
+    public Address(){
+
+    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public String getStreet() {
         return street;
@@ -63,8 +75,6 @@ public class Address {
     public void setCountry(String country) {
         this.country = country;
     }
-
-    private String country;
 
     public Long getId() {
         return id;
